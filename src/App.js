@@ -1,8 +1,11 @@
 import React from 'react';
 import { ReactQueryDevtools } from 'react-query-devtools';
+import { useQuery } from 'react-query';
+import { logIn } from './api';
 import { Input, Messages, Participants } from './components';
 
-function App() {
+export default () => {
+  useQuery('login', async () => await logIn());
   return (
     <div className="app">
       <h1>CHAT!</h1>
@@ -13,5 +16,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
