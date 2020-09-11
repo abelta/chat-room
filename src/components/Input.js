@@ -1,23 +1,26 @@
 import React, { useRef } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { postMessage } from '../api';
 import './Input.css';
 
 export default () => {
   const input = useRef();
 
-  const user = { id: 999, name: 'YOU' };
+  const { data: user } = useQuery('login');
+  console.log('CURRENT USER', user);
 
-  const [mutate] = useMutation(async content => await postMessage({ user, content }));
+  const [mutate] = useMutation(content => postMessage({ user, content }));
 
   return (
     <div className="input">
       <input
         className="input__text"
+        disabled={!user}
         ref={input}
       />
       <button
         className="input__button"
+        disabled={!user}
         onClick={() => {
           const content = input.current.value;
           if (content === undefined) return;

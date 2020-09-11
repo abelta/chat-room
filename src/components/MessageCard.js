@@ -1,9 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
+import { useQuery } from 'react-query';
+import './MessageCard.css';
 
-export default ({ user: { name, id }, content }) => (
-  <div className={classNames('message-card', { 'mine': id === 999 })}>
-    <strong>{name}:</strong>
-    <span>{content}</span>
-  </div>
-);
+export default ({ user: { name, id }, content }) => {
+  const { data: currentUser }  = useQuery('login');
+
+  return (
+    <div className={classNames('message-card', { 'mine': id === currentUser?.id })}>
+      <strong>{name}:</strong>
+      <span>{content}</span>
+    </div>
+  );
+};

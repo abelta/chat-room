@@ -1,10 +1,10 @@
 import faker from 'faker';
 import { arrayFilledWith, maybe } from '../helpers';
 
-const participant = () => ({
-  id: faker.random.number.uuid,
-  name: faker.internet.userName(),
-  avatar: faker.internet.avatar(),
+const participant = ({ id, name, avatar } = {}) => ({
+  id: id || faker.random.number(),
+  name: name || faker.internet.userName(),
+  avatar: avatar || faker.internet.avatar(),
 });
 
 class Current {

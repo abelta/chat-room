@@ -1,8 +1,16 @@
 import { rest } from 'msw';
-import participants from './participants';
+import participants, { participant } from './participants';
 import messages, { currentMessages } from './messages';
 
 export default [
+  rest.get('/login', (req, res, ctx) => {
+    const name = req.url.searchParams.get('name');
+    return res(
+      ctx.status(200),
+      ctx.json(participant({ name }))
+    )
+  }),
+
   rest.get('/participants', (req, res, ctx) => (
     res(
       ctx.status(200),
