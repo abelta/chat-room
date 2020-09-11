@@ -10,6 +10,7 @@ export default () => {
 
   const [messages, dispatch] = useReducer(messagesReducer, []);
 
+  // Configured for long polling.
   useQuery(
     'messages',
     async () => await getMessages(),

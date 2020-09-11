@@ -5,6 +5,7 @@ import ParticipantCard from './ParticipantCard';
 import './Participants.css';
 
 export default () => {
+  // Configured for long polling.
   const { data: participants } = useQuery(
     'participants',
     async () => await getParticipants(),
