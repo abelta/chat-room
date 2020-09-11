@@ -12,7 +12,7 @@ export default () => {
         <Participants />
         <Messages />
         <Input />
-        <ReactQueryDevtools initialIsOpen />
+        <ReactQueryDevtools />
       </div>
     </ModalProvider>
   );

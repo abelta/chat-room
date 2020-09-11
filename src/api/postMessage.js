@@ -1,6 +1,4 @@
-export default (message) => {
-  console.log('MESSAGE', message);
-  fetch(
+export default message => fetch(
   '/message',
   { method: 'post', body: JSON.stringify(message) },
-)};
+);

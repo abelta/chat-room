@@ -7,7 +7,6 @@ export default () => {
   const input = useRef();
 
   const { data: user } = useQuery('login');
-  console.log('CURRENT USER', user);
 
   const [mutate] = useMutation(content => postMessage({ user, content }));
 
