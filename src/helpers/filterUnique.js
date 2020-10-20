@@ -1,1 +1,1 @@
-export default (val, index, self) => self.indexOf(val) === index;
+export default (val, index, self) => self.indexOf(val) === index

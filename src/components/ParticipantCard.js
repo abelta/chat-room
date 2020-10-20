@@ -1,5 +1,5 @@
-import React from 'react';
-import './ParticipantCard.css';
+import React from 'react'
+import './ParticipantCard.css'
 
 export default ({ avatar, name }) => (
   <div className="participant-card">
@@ -10,4 +10,4 @@ export default ({ avatar, name }) => (
     />
     <span>{name}</span>
   </div>
-);
+)

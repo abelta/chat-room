@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
-import { useMutation, useQueryCache } from 'react-query';
-import { logIn } from '../api';
+import React, { useRef } from 'react'
+import { useMutation, useQueryCache } from 'react-query'
+import { logIn } from '../api'
 
 export default () => {
-  const inputName = useRef();
+  const inputName = useRef()
 
-  const inputPassword = useRef();
+  const inputPassword = useRef()
 
-  const queryCache = useQueryCache();
+  const queryCache = useQueryCache()
 
   const [mutate] = useMutation(
     (name, password) => logIn({ name, password }),
@@ -18,7 +18,7 @@ export default () => {
         { cacheTime: 'Infinity', staleTime: 'Infinity' },
       ),
     },
-  );
+  )
 
   return (
     <div className="login-modal">
@@ -40,4 +40,4 @@ export default () => {
       </button>
     </div>
   )
-};
+}

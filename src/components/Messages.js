@@ -1,14 +1,14 @@
-import React, { useLayoutEffect, useReducer, useRef } from 'react';
-import { useQuery } from 'react-query';
-import { getMessages } from '../api';
-import messagesReducer, { addMessages } from './messagesReducer';
-import MessageCard from './MessageCard';
-import './Messages.css';
+import React, { useLayoutEffect, useReducer, useRef } from 'react'
+import { useQuery } from 'react-query'
+import { getMessages } from '../api'
+import messagesReducer, { addMessages } from './messagesReducer'
+import MessageCard from './MessageCard'
+import './Messages.css'
 
 export default () => {
-  const scrollRef = useRef();
+  const scrollRef = useRef()
 
-  const [messages, dispatch] = useReducer(messagesReducer, []);
+  const [messages, dispatch] = useReducer(messagesReducer, [])
 
   // Configured for long polling.
   useQuery(
@@ -18,7 +18,7 @@ export default () => {
       refetchInterval: 1000,
       onSuccess: data => dispatch(addMessages(data)),
     },
-  );
+  )
 
   useLayoutEffect(
     () => scrollRef.current.scrollTo({
@@ -26,7 +26,7 @@ export default () => {
       behavior: 'smooth',
     }),
     [messages],
-  );
+  )
 
   return (
     <div
@@ -47,5 +47,5 @@ export default () => {
         )
       }
     </div>
-  );
-};
+  )
+}

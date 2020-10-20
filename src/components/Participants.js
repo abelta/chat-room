@@ -1,8 +1,8 @@
-import React from 'react';
-import { useQuery } from 'react-query';
-import { getParticipants } from '../api';
-import ParticipantCard from './ParticipantCard';
-import './Participants.css';
+import React from 'react'
+import { useQuery } from 'react-query'
+import { getParticipants } from '../api'
+import ParticipantCard from './ParticipantCard'
+import './Participants.css'
 
 export default () => {
   // Configured for long polling.
@@ -12,7 +12,7 @@ export default () => {
     {
       refetchInterval: 1000,
     },
-  );
+  )
 
   return (
     <div className="participants">
@@ -30,5 +30,5 @@ export default () => {
         )
       }
     </div>
-  );
-};
+  )
+}
