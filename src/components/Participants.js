@@ -6,29 +6,22 @@ import './Participants.css'
 
 export default () => {
   // Configured for long polling.
-  const { data: participants } = useQuery(
+  const { data: participants = []} = useQuery(
     'participants',
     async () => await getParticipants(),
-    {
-      refetchInterval: 1000,
-    },
+    {  refetchInterval: 1000 },
   )
 
   return (
-    <div className="participants">
+    <section className="participants">
       {
-        participants && (
-          <ul>
-            {
-              participants.map((participant, i) => (
-                <li key={i}>
-                  <ParticipantCard {...participant} />
-                </li>
-              ))
-            }
-          </ul>
-        )
+        participants.map((participant) => (
+            <ParticipantCard
+              key={participant.id}
+              {...participant}
+            />
+        ))
       }
-    </div>
+    </section>
   )
 }

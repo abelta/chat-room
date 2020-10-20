@@ -5,17 +5,19 @@ import './Input.css'
 
 export default () => {
   const input = useRef()
+  const button = useRef()
 
   const { data: user } = useQuery('login')
 
   const [mutate] = useMutation(content => postMessage({ user, content }))
 
   return (
-    <div className="input">
+    <section className="input">
       <input
         className="input__text"
         disabled={!user}
         ref={input}
+        onKeyUp={({ key }) => key === 'Enter' && button.current.click()}
       />
       <button
         className="input__button"
@@ -26,9 +28,10 @@ export default () => {
           mutate(content)
           input.current.value = ''
         }}
+        ref={button}
       >
         SEND
       </button>
-    </div>
+    </section>
   )
 }

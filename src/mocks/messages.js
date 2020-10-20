@@ -12,7 +12,7 @@ class Current {
   constructor() {
     this.idCount = 0
     this.messages = []
-    setInterval(() => this.setNewMessages(), 5 * 1000)
+    setInterval(() => this.setNewMessages(), 1 * 1000)
     setInterval(() => this.cleanMessages(), 60 * 1000)
   }
 

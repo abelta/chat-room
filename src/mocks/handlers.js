@@ -5,7 +5,7 @@ import messages, { currentMessages } from './messages'
 
 export default [
   rest.get('/login', async (req, res, ctx) => {
-    await sleep(2000)
+    await sleep(1000)
     const name = req.url.searchParams.get('name')
     return res(
       ctx.status(200),
@@ -14,7 +14,7 @@ export default [
   }),
 
   rest.get('/participants', async (req, res, ctx) => {
-    await sleep(1000)
+    await sleep(500)
     return res(
       ctx.status(200),
       ctx.json(participants()),
@@ -22,7 +22,7 @@ export default [
   }),
 
   rest.get('/messages', async (req, res, ctx) => {
-    await sleep(1000)
+    await sleep(500)
     return res(
       ctx.status(200),
       ctx.json(messages()),
@@ -30,7 +30,7 @@ export default [
   }),
 
   rest.post('/message', async (req, res, ctx) => {
-    await sleep(2000)
+    await sleep(1000)
     const message = JSON.parse(req.body)
     currentMessages.addMessage(message)
     return res(ctx.status(200))

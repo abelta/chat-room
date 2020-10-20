@@ -1,26 +1,29 @@
-import React, { useLayoutEffect, useReducer, useRef } from 'react'
+import React, { useEffect, useReducer, useRef } from 'react'
 import { useQuery } from 'react-query'
 import { getMessages } from '../api'
 import messagesReducer, { addMessages } from './messagesReducer'
 import MessageCard from './MessageCard'
 import './Messages.css'
 
+const REFETCH_INTERVAL = 500
+
 export default () => {
   const scrollRef = useRef()
 
-  const [messages, dispatch] = useReducer(messagesReducer, [])
+  const [messages = [], dispatch] = useReducer(messagesReducer, [])
 
-  // Configured for long polling.
+  // Long polling for messages.
   useQuery(
     'messages',
-    async () => await getMessages(),
+    async ({ data: messages = [] }) => await getMessages(),
     {
-      refetchInterval: 1000,
+      refetchInterval: REFETCH_INTERVAL,
       onSuccess: data => dispatch(addMessages(data)),
     },
   )
 
-  useLayoutEffect(
+  // Always scrolls to bottom.
+  useEffect(
     () => scrollRef.current.scrollTo({
       top: scrollRef.current.scrollHeight,
       behavior: 'smooth',
@@ -29,23 +32,18 @@ export default () => {
   )
 
   return (
-    <div
+    <section
       className="messages"
       ref={scrollRef}
     >
       {
-        messages && (
-          <ul>
-            {
-              messages.map((message, i) => (
-                <li key={i}>
-                  <MessageCard {...message} />
-                </li>
-              ))
-            }
-          </ul>
-        )
+        messages.map((message, i) => (
+          <MessageCard
+            key={i}
+            {...message}
+          />
+        ))
       }
-    </div>
+    </section>
   )
 }

@@ -1,18 +1,18 @@
 import React from 'react'
-import { ReactQueryDevtools } from 'react-query-devtools'
+// import { ReactQueryDevtools } from 'react-query-devtools'
 import { ModalProvider } from 'react-modal-hook'
-import { Input, LoginController, Messages, Participants } from './components'
+import { Input, LoginController, Logo, Messages, Participants } from './components'
 
 export default () => {
   return (
     <ModalProvider>
       <div className="app">
-        <h1>CHAT!</h1>
+        <Logo />
         <LoginController />
         <Participants />
         <Messages />
         <Input />
-        <ReactQueryDevtools />
+        {/* <ReactQueryDevtools /> */}
       </div>
     </ModalProvider>
   )

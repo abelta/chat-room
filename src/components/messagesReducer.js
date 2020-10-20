@@ -1,4 +1,4 @@
-import { filterUnique } from '../helpers'
+import { filterUnique } from 'helpers'
 
 export default (state, { type, payload }) => {
   switch (type) {

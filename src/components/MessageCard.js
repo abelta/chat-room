@@ -7,9 +7,9 @@ export default ({ user: { name, id }, content }) => {
   const { data: currentUser }  = useQuery('login')
 
   return (
-    <div className={classNames('message-card', { 'mine': id === currentUser?.id })}>
+    <article className={classNames('message-card', { 'mine': id === currentUser?.id })}>
       <strong>{name}:</strong>
       <span>{content}</span>
-    </div>
+    </article>
   )
 }
