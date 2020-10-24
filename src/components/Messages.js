@@ -1,13 +1,13 @@
 import React, { useEffect, useReducer, useRef } from 'react'
 import { useQuery } from 'react-query'
-import { getMessages } from '../api'
+import classNames from 'classnames'
+import { getMessages } from 'api'
 import messagesReducer, { addMessages } from './messagesReducer'
-import MessageCard from './MessageCard'
-import './Messages.css'
+import { MessageCard } from 'components'
 
 const REFETCH_INTERVAL = 500
 
-export default () => {
+export default ({ className }) => {
   const scrollRef = useRef()
 
   const [messages = [], dispatch] = useReducer(messagesReducer, [])
@@ -33,7 +33,7 @@ export default () => {
 
   return (
     <section
-      className="messages"
+      className={classNames('p-6 bg-gray-100 overflow-y-scroll', className)}
       ref={scrollRef}
     >
       {

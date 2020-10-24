@@ -1,10 +1,10 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-import { getParticipants } from '../api'
-import ParticipantCard from './ParticipantCard'
-import './Participants.css'
+import classNames from 'classnames'
+import { getParticipants } from 'api'
+import { ParticipantCard } from 'components'
 
-export default () => {
+export default ({ className }) => {
   // Configured for long polling.
   const { data: participants = []} = useQuery(
     'participants',
@@ -13,13 +13,13 @@ export default () => {
   )
 
   return (
-    <section className="participants">
+    <section className={classNames('bg-teal-500 p-4 overflow-y-scroll-auto', className)}>
       {
-        participants.map((participant) => (
-            <ParticipantCard
-              key={participant.id}
-              {...participant}
-            />
+        participants.map(participant => (
+          <ParticipantCard
+            key={participant.id}
+            {...participant}
+          />
         ))
       }
     </section>

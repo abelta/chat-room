@@ -1,5 +1,5 @@
 import faker from 'faker'
-import { arrayFilledWith, maybe } from '../helpers'
+import { arrayFilledWith, maybe } from 'helpers'
 
 const participant = ({ id, name, avatar } = {}) => ({
   id: id || faker.random.number(),

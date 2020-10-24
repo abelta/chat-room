@@ -1,13 +1,14 @@
 import React from 'react'
-import './ParticipantCard.css'
 
 export default ({ avatar, name }) => (
-  <article className="participant-card">
+  <article className="block mb-2">
     <img
-      className="participant-card__avatar"
+      className="inline object-center w-8 h-8 border border-gray-900 border-solid rounded-full"
       src={avatar}
       alt={name}
     />
-    <span>{name}</span>
+    <span className="inline ml-2 font-sans font-semibold text-white">
+      {name}
+    </span>
   </article>
 )

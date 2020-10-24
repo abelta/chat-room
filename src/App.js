@@ -1,19 +1,16 @@
 import React from 'react'
 // import { ReactQueryDevtools } from 'react-query-devtools'
 import { ModalProvider } from 'react-modal-hook'
-import { Input, LoginController, Logo, Messages, Participants } from './components'
+import { ChatView, Header, LoginController, MessageInput } from 'components'
 
-export default () => {
-  return (
-    <ModalProvider>
-      <div className="app">
-        <Logo />
-        <LoginController />
-        <Participants />
-        <Messages />
-        <Input />
-        {/* <ReactQueryDevtools /> */}
-      </div>
-    </ModalProvider>
-  )
-}
+export default () => (
+  <ModalProvider>
+    <div className="absolute w-screen h-screen subpixel-antialiased bg-gray-600 justify-items-center">
+      <Header />
+      <LoginController />
+      <ChatView />
+      <MessageInput />
+      {/* <ReactQueryDevtools /> */}
+    </div>
+  </ModalProvider>
+)

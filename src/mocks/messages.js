@@ -1,5 +1,5 @@
 import faker from 'faker'
-import { maybe } from '../helpers'
+import { maybe } from 'helpers'
 import { currentParticipants } from './participants'
 
 const message = ({ id, user, content }) => ({
@@ -12,13 +12,16 @@ class Current {
   constructor() {
     this.idCount = 0
     this.messages = []
-    setInterval(() => this.setNewMessages(), 1 * 1000)
+    setInterval(() => this.setNewMessages(), 2 * 1000)
     setInterval(() => this.cleanMessages(), 60 * 1000)
   }
 
   setNewMessages = () => {
     for (const user of currentParticipants.participants) {
-      maybe(() => this.messages = [message({ id: this.idCount, user })])
+      maybe(
+        () => this.messages.push(message({ id: this.idCount, user })),
+        { probability: 1/5 }
+      )
     }
   }
 
@@ -27,7 +30,7 @@ class Current {
   }
 
   cleanMessages = () => {
-    this.messages = []
+    this.messages = this.messages.splice(this.messages.length - 25)
   }
 }
 

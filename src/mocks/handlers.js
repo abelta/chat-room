@@ -1,5 +1,5 @@
 import { rest } from 'msw'
-import { sleep } from '../helpers'
+import { sleep } from 'helpers'
 import participants, { participant } from './participants'
 import messages, { currentMessages } from './messages'
 
