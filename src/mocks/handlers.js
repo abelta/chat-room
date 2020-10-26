@@ -30,7 +30,7 @@ export default [
   }),
 
   rest.post('/message', async (req, res, ctx) => {
-    await sleep(1000)
+    await sleep(100)
     const message = JSON.parse(req.body)
     currentMessages.addMessage(message)
     return res(ctx.status(200))
