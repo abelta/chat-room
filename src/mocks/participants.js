@@ -9,7 +9,7 @@ const participant = ({ id, name, avatar } = {}) => ({
 
 class Current {
   constructor() {
-    this.participants = arrayFilledWith(elem => participant(), 5)
+    this.participants = arrayFilledWith(() => participant(), 5)
     setInterval(() => this.addUser(), 3 * 1000)
     setInterval(() => this.removeUser(), 3 * 1000)
   }
