@@ -1,15 +1,12 @@
 import React, { useRef } from 'react'
-import { useMutation, useQuery } from 'react-query'
-import { postMessage } from 'api'
 import { FormInput, FormButton } from 'components'
+import { useCurrentUser, useMutatePostMessage } from 'hooks'
 
 export default () => {
   const input = useRef()
   const button = useRef()
-
-  const { data: user } = useQuery('login')
-
-  const [mutate] = useMutation(content => postMessage({ user, content }))
+  const user = useCurrentUser()
+  const mutate = useMutatePostMessage()
 
   return (
     <section className="container flex p-0 mx-auto mt-4">
@@ -26,8 +23,8 @@ export default () => {
         disabled={!user}
         onClick={() => {
           const content = input.current.value
-          if (content === undefined) return
-          mutate(content)
+          if (content === '') return
+          mutate({ user, content })
           input.current.value = ''
         }}
         ref={button}

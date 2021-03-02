@@ -1,5 +1,10 @@
 {
   "tabWidth": 2,
-  "useTabs": false
+  "useTabs": false,
+  "noSemi": true,
+  "singleQuote": true,
+  "arrowParens": "avoid",
+  "printWidth": 80,
+  "trailingComma": "all",
+  "endOfLine": "lf"
 }
-

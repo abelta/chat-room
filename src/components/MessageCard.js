@@ -1,16 +1,16 @@
 import React from 'react'
 import classNames from 'classnames'
-import { useQuery } from 'react-query'
+import { useCurrentUser } from 'hooks'
 
 export default ({ user: { name, id }, content }) => {
-  const { data: currentUser }  = useQuery('login')
+  const currentUser = useCurrentUser()
 
   return (
     <article
-      className={classNames(
-        'text-gray-800 my-4',
-        { 'font-bold text-red-500': id === currentUser?.id }
-      )}
+      className={classNames('text-gray-800 my-4', {
+        'font-bold text-red-500': id === currentUser?.id,
+      })}
+      data-testid="message-card"
     >
       <span className="mr-4 font-bold">{name}:</span>
       <span>{content}</span>
