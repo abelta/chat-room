@@ -9,7 +9,7 @@
     "react-modal-hook": "^3.0.0",
     "react-query": "2.26.4",
     "react-query-devtools": "^2.4.7",
-    "react-scripts": "3.4.3",
+    "react-scripts": "3.4.0",
     "tailwindcss": "^1.9.5"
   },
   "scripts": {
@@ -18,7 +18,8 @@
     "prebuild": "npm run build:tailwind",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watch-all -- --config=jest.config.js",
+    "test:coverage": "react-scripts test --coverage --watch-all -- --config=jest.config.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,6 +46,7 @@
     "eslint-plugin-react": "^7.22.0",
     "faker": "^5.1.0",
     "msw": "^0.20.5",
+    "nock": "^13.0.10",
     "prettier": "^2.2.1"
   }
 }

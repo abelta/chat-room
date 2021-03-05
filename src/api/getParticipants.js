@@ -1,4 +1,1 @@
-export default () => (
-  fetch(`/participants`)
-  .then(res => res.json())
-)
+export default () => fetch('/participants').then(res => res.json())
