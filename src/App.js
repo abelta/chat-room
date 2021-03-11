@@ -1,5 +1,4 @@
 import React from 'react'
-// import { ReactQueryDevtools } from 'react-query-devtools'
 import { ModalProvider } from 'react-modal-hook'
 import {
   ChatView,
@@ -18,7 +17,6 @@ export default () => {
         <ChatView />
         <MessageInput />
         <Watermark />
-        {/* <ReactQueryDevtools /> */}
       </div>
     </ModalProvider>
   )

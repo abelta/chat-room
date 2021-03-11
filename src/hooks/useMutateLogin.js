@@ -3,7 +3,7 @@ import { logIn } from 'api'
 
 export default () => {
   const queryCache = useQueryCache()
-  const [mutate] = useMutation(
+  const [mutate, status] = useMutation(
     ({ name, password }) => logIn({ name, password }),
     {
       onSuccess: data =>
@@ -13,5 +13,5 @@ export default () => {
         }),
     },
   )
-  return mutate
+  return { mutate, ...status }
 }

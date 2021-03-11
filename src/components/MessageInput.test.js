@@ -1,6 +1,6 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import userEvent, { specialChars } from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event'
 import { MessageInput } from 'components'
 import { useCurrentUser, useMutatePostMessage } from 'hooks'
 

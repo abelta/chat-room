@@ -7,7 +7,7 @@ jest.mock('../api/logIn', () => jest.fn())
 describe('useMutateLogin', () => {
   it('returns a function', () => {
     const { result } = renderHook(() => useMutateLogin())
-    expect(result.current).toBeInstanceOf(Function)
+    expect(result.current.mutate).toBeInstanceOf(Function)
   })
 
   describe('returned function', () => {
@@ -15,11 +15,8 @@ describe('useMutateLogin', () => {
       const name = 'Alberto'
       const password = 'xxx'
       const { result, waitFor } = renderHook(() => useMutateLogin())
-      await act(async () => {
-        result.current({ name, password })
-        await waitFor(() => result.current.isSuccess)
-      })
-
+      await act(() => result.current.mutate({ name, password }))
+      await waitFor(() => result.isSuccess)
       expect(logIn).toHaveBeenCalledWith({ name, password })
     })
   })

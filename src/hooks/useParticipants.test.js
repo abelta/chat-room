@@ -14,7 +14,7 @@ const participants1 = [
   { id: 2, name: 'Cristina' },
 ]
 
-describe('getParticipants', () => {
+describe('useParticipants', () => {
   describe('with each iteration', () => {
     it('returns current list of participants', async () => {
       getParticipants.mockImplementation(() => Promise.resolve(participants0))

@@ -1,11 +1,11 @@
 import React, { useRef } from 'react'
-import { FormButton, FormInput } from 'components'
+import { FormButton, FormInput, Spinner } from 'components'
 import { useMutateLogin } from 'hooks'
 
 export default () => {
   const inputName = useRef()
   const inputPassword = useRef()
-  const mutate = useMutateLogin()
+  const { isError, isLoading, mutate } = useMutateLogin()
 
   return (
     <div
@@ -29,6 +29,11 @@ export default () => {
             data-testid="input-password"
           />
         </FormInput>
+        {isError && (
+          <div className="text-red-600" data-testid="login-modal-error">
+            Wrong credentials. Please try again
+          </div>
+        )}
         <div className="flex justify-center mt-10">
           <FormButton
             onClick={() =>
@@ -38,7 +43,8 @@ export default () => {
               })
             }
           >
-            LOG IN
+            {!isLoading && <span>LOG IN</span>}
+            {isLoading && <Spinner />}
           </FormButton>
         </div>
       </div>
