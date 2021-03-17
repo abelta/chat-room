@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { getMessages } from 'api'
 import { useMessages } from 'hooks'
 
-jest.mock('../api/getMessages', () => jest.fn())
+jest.mock('../api/getMessages')
 
 const messages = [
   { id: 0, user: { id: 0, name: 'Alberto' }, content: 'xxxx' },

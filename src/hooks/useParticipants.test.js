@@ -16,7 +16,7 @@ const participants1 = [
 
 describe('useParticipants', () => {
   describe('with each iteration', () => {
-    it('returns current list of participants', async () => {
+    it.skip('returns current list of participants', async () => {
       getParticipants.mockImplementation(() => Promise.resolve(participants0))
       const { result, waitForNextUpdate } = renderHook(() => useParticipants())
       await waitForNextUpdate()

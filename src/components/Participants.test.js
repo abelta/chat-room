@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { Participants } from 'components'
 import { useParticipants } from 'hooks'
 
-jest.mock('../hooks/useParticipants.js', () => jest.fn())
+jest.mock('../hooks/useParticipants')
 
 describe('Participants', () => {
   beforeEach(() => {

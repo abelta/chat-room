@@ -6,7 +6,7 @@
 import '@testing-library/jest-dom/extend-expect'
 import userEvent from '@testing-library/user-event'
 import { screen } from '@testing-library/react'
-import { server } from './mocks/server.js'
+// import { server } from './mocks/server.js'
 import { queryCache } from 'react-query'
 
 // Setup for MSW

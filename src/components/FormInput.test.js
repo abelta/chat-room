@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { FormInput } from 'components'
 
 describe('FormInput', () => {
-  it('renders propperly', () => {
+  it('renders properly', () => {
     render(
       <FormInput name="nombre" className="clase">
         <input></input>

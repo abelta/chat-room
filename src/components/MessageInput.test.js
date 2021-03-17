@@ -1,14 +1,14 @@
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MessageInput } from 'components'
 import { useCurrentUser, useMutatePostMessage } from 'hooks'
 
-jest.mock('../hooks/useCurrentUser.js', () => jest.fn())
-jest.mock('../hooks/useMutatePostMessage.js', () => jest.fn())
+jest.mock('../hooks/useCurrentUser')
+jest.mock('../hooks/useMutatePostMessage')
 
 describe('MessageInput', () => {
-  it('renders propperly', () => {
+  it('renders properly', () => {
     render(<MessageInput />)
     expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(screen.getByRole('button')).toBeInTheDocument()
@@ -48,7 +48,7 @@ describe('MessageInput', () => {
       describe('nothing is written in', () => {
         it('does not post message', () => {
           render(<MessageInput />)
-          fireEvent.click(screen.getByRole('button'))
+          userEvent.click(screen.getByRole('button'))
           expect(mutate).not.toHaveBeenCalled()
         })
       })
@@ -57,10 +57,8 @@ describe('MessageInput', () => {
         const content = 'something written in'
         it('posts message', () => {
           render(<MessageInput />)
-          fireEvent.change(screen.getByRole('textbox'), {
-            target: { value: content },
-          })
-          fireEvent.click(screen.getByRole('button'))
+          userEvent.type(screen.getByRole('textbox'), content)
+          userEvent.click(screen.getByRole('button'))
           expect(mutate).toHaveBeenCalledWith({ user, content })
         })
       })
@@ -86,9 +84,7 @@ describe('MessageInput', () => {
 
         it('posts message', () => {
           render(<MessageInput />)
-          fireEvent.change(screen.getByRole('textbox'), {
-            target: { value: content },
-          })
+          userEvent.type(screen.getByRole('textbox'), content)
           userEvent.type(screen.getByRole('textbox'), '{enter}')
           expect(mutate).toHaveBeenCalledWith({ user, content })
         })
